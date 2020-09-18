@@ -1,0 +1,61 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<div class="container">
+		<a class="navbar-brand" href="#"><span class="logo">dwwm-shop</span></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+		        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div id="navbarNavDropdown" class="navbar-collapse collapse">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="{{ path('store_accueil') }}">
+						<i class="fas fa-home"></i> Accueil
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#"><i class="fas fa-list"></i> Catalogue</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#"><i class="fas fa-id-card"></i> Contact</a>
+				</li>
+			</ul>
+			<ul class="navbar-nav">
+				
+				{% if is_granted("ROLE_ADMIN") %}
+					<li class="nav-item">
+						<a class="nav-link" href="#"><i class="fas fa-sign-in-alt"></i> Tableau de bord</a>
+					</li>
+				{% else %}
+					<li class="nav-item dropdown">
+						<a class="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+						   aria-haspopup="true" aria-expanded="false">
+							<i class="fas fa-shopping-cart"></i> Panier
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item" href="#">Action</a>
+							<a class="dropdown-item" href="#">Another action</a>
+						</div>
+					</li>
+				{% endif %}
+				
+				{% if is_granted("ROLE_USER") %}
+					<li class="nav-item">
+						<a class="nav-link" href="#"><i class="fas fa-user-circle"></i> Mon Compte</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('app_logout') }}"><i class="fas fa-sign-out-alt"></i> Se
+							deconnecter</a>
+					</li>
+				{% else %}
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('app_login') }}"><i class="fas fa-sign-in-alt"></i> Connexion</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#"><i class="fas fa-registered"></i> Inscription</a>
+					</li>
+				{% endif %}
+
+			</ul>
+		</div>
+	</div>
+</nav>

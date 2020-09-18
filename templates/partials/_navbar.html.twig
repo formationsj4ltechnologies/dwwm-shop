@@ -1,17 +1,12 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 	<div class="container">
-		<a class="navbar-brand" href="#"><span class="logo">dwwm-shop</span></a>
+		<a class="navbar-brand" href="{{ path('store_accueil') }}"><span class="logo" title="Page Accueil">dwwm-shop</span></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
 		        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div id="navbarNavDropdown" class="navbar-collapse collapse">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active">
-					<a class="nav-link" href="{{ path('store_accueil') }}">
-						<i class="fas fa-home"></i> Accueil
-					</a>
-				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="#"><i class="fas fa-list"></i> Catalogue</a>
 				</li>
@@ -19,8 +14,13 @@
 					<a class="nav-link" href="#"><i class="fas fa-id-card"></i> Contact</a>
 				</li>
 			</ul>
+			
+			<form class="form-inline my-2 my-lg-0 mr-auto">
+				<input class="form-control mr-sm-2" type="search" placeholder="Rechercher..." aria-label="Search">
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
+			</form>
+			
 			<ul class="navbar-nav">
-				
 				{% if is_granted("ROLE_ADMIN") %}
 					<li class="nav-item">
 						<a class="nav-link" href="#"><i class="fas fa-sign-in-alt"></i> Tableau de bord</a>
@@ -51,10 +51,10 @@
 						<a class="nav-link" href="{{ path('app_login') }}"><i class="fas fa-sign-in-alt"></i> Connexion</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#"><i class="fas fa-registered"></i> Inscription</a>
+						<a class="nav-link" href="{{path('app_register')}}"><i class="fas fa-registered"></i> Inscription</a>
 					</li>
 				{% endif %}
-
+			
 			</ul>
 		</div>
 	</div>

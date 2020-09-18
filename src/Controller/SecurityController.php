@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
@@ -37,9 +38,23 @@ class SecurityController extends AbstractController
     }
 
     /**
+     * @param Request $request
+     * @return Response
+     * @Route("/register", name="register")
+     */
+    public function register(Request $request)
+    {
+        return $this->render("security/register.html.twig", [
+            "titre_page" => $titrePage = "Register",
+            "titre_section" => $titreSection = "page d'inscription",
+        ]);
+    }
+
+    /**
      * @Route("/logout", name="logout")
      */
-    public function logout(){
+    public function logout()
+    {
         return new Exception("Sera intercepté avant d'arriver ici");
     }
 }

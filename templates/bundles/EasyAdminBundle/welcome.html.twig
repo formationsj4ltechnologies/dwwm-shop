@@ -1,0 +1,81 @@
+{# @var ea \EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext #}
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block page_title %}
+	{{ titre_page }}
+{% endblock %}
+
+{% block page_content %}
+	<div class="row">
+		<div class="col-sm-3">
+			<div class="card">
+				<div class="card-body">
+					<div class="d-flex flex-row bd-highlight mb-3 justify-content-between">
+						<div class="p-2 bd-highlight">
+							<span style="font-size: 2rem; color: orangered"><i class="fas fa-shopping-cart"></i></span>
+						</div>
+						<div class="p-2 bd-highlight flex-row text-right">
+							<div class="card-text">Total de commandes</div>
+							<div class="card-text"> 58</div>
+						</div>
+					</div>
+					<a href="#" class="btn btn-block btn-primary">Voir les commandes</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="card">
+				<div class="card-body">
+					<div class="d-flex flex-row bd-highlight mb-3 justify-content-between">
+						<div class="p-2 bd-highlight">
+							<span style="font-size: 2rem; color: #ff9800">
+								<i class="fas fa-thermometer-three-quarters"></i>
+							</span>
+						</div>
+						<div class="p-2 bd-highlight flex-row text-right">
+							<div class="card-text">Produits en stock</div>
+							<div class="card-text"> 108</div>
+						</div>
+					</div>
+					<a href="#" class="btn btn-block btn-primary">Voir les produits</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="card">
+				<div class="card-body">
+					<div class="d-flex flex-row bd-highlight mb-3 justify-content-between">
+						<div class="p-2 bd-highlight">
+							<span style="font-size: 2rem; color: #00c853">
+								<i class="far fa-money-bill-alt"></i>
+							</span>
+						</div>
+						<div class="p-2 bd-highlight flex-row text-right">
+							<div class="card-text">Revenus total</div>
+							<div class="card-text"> 8.759 €</div>
+						</div>
+					</div>
+					<a href="#" class="btn btn-block btn-primary">Voir les payements</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="card">
+				<div class="card-body">
+					<div class="d-flex flex-row bd-highlight mb-3 justify-content-between">
+						<div class="p-2 bd-highlight">
+							<span style="font-size: 2rem; color: #03a9f4">
+								<i class="fas fa-thermometer-three-quarters"></i>
+							</span>
+						</div>
+						<div class="p-2 bd-highlight flex-row text-right">
+							<div class="card-text">Comptes Users</div>
+							<div class="card-text"> {{ nb_users }}</div>
+						</div>
+					</div>
+					<a href="#" class="btn btn-block btn-primary">Voir les users</a>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

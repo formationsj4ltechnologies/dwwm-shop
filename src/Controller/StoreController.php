@@ -15,12 +15,11 @@ class StoreController extends AbstractController
     /**
      * @Route("/", name="accueil")
      */
-    public function index()
+    public function accueil()
     {
-
         return $this->render('store/index.html.twig', [
             'titre_page' => $titrePage = "Accueil",
-            'titre_section' => $titreSection = "Page accueil de la boutique",
+            'titre_section' => $titreSection = "page accueil",
         ]);
     }
 }

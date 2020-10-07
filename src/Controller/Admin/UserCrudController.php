@@ -6,7 +6,13 @@ use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
+/**
+ * Class UserCrudController
+ * @package App\Controller\Admin
+ * @IsGranted("ROLE_ADMIN", message="Vous n'avez pas les droits necessaires pour acceder à cette ressource")
+ */
 class UserCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string

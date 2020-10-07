@@ -17,7 +17,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\HasLifecycleCallbacks
  * @UniqueEntity(
  *     fields={"nom"},
- *     message="Cette marque existe deja dans le systeme"
+ *     message="Cette marque existe deja dans le système"
  * )
  */
 class Marque

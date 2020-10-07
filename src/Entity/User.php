@@ -282,7 +282,6 @@ class User implements UserInterface
     {
         if ($this->commentaires->contains($commentaire)) {
             $this->commentaires->removeElement($commentaire);
-            // set the owning side to null (unless already changed)
             if ($commentaire->getClient() === $this) {
                 $commentaire->setClient(null);
             }

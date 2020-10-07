@@ -51,14 +51,50 @@ class Produit
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank (message="Veuillez renseigner le nom de l'image")
      */
     private $description;
 
     /**
-     * @Gedmo\Slug(fields={"nom"})
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
-    private $slug;
+    private $wifi;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $bluetooth = true;
+
+    /**
+     * @ORM\Column(type="boolean")
+     * @Assert\NotBlank(message="Le champ webcam est requis")
+     */
+    private $webcam=true;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $cpu;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $ram;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $vga;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $taille;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $disqueDur;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -72,6 +108,12 @@ class Produit
     private $imageFile;
 
     /**
+     * @Gedmo\Slug(fields={"nom"})
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $slug;
+
+    /**
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
@@ -80,32 +122,6 @@ class Produit
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $updatedAt;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $os = "Windows 10";
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $clavier = "Azerty";
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $wireless;
-
-    /**
-     * @ORM\Column(type="boolean", nullable=true)
-     */
-    private $bluetooth = true;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="Le champ webcam est requis")
-     */
-    private $webcam;
 
     /**
      * @ORM\ManyToOne(targetEntity=Marque::class, inversedBy="produits")
@@ -120,48 +136,19 @@ class Produit
     private $categorie;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Stockage::class)
-     */
-    private $stockage;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Processeur::class)
-     */
-    private $processeur;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Memoire::class)
-     */
-    private $memoire;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Connectique::class)
-     */
-    private $connectique;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=CarteGraphique::class)
-     */
-    private $carteGraphique;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Boitier::class)
-     */
-    private $boitier;
-
-    /**
      * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="produit")
      */
     private $commentaires;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Ecran::class)
+     * @ORM\OneToMany(targetEntity=PieceJointe::class, mappedBy="produit", cascade={"persist"})
      */
-    private $ecran;
+    private $pieceJointes;
 
     public function __construct()
     {
         $this->commentaires = new ArrayCollection();
+        $this->pieceJointes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -284,38 +271,26 @@ class Produit
         return $this;
     }
 
-    public function getOs(): ?string
+    public function getTaille(): ?string
     {
-        return $this->os;
+        return $this->taille;
     }
 
-    public function setOs(string $os): self
+    public function setTaille(string $taille): self
     {
-        $this->os = $os;
+        $this->taille = $taille;
 
         return $this;
     }
 
-    public function getClavier(): ?string
+    public function getWifi(): ?string
     {
-        return $this->clavier;
+        return $this->wifi;
     }
 
-    public function setClavier(string $clavier): self
+    public function setWifi(string $wifi): self
     {
-        $this->clavier = $clavier;
-
-        return $this;
-    }
-
-    public function getWireless(): ?string
-    {
-        return $this->wireless;
-    }
-
-    public function setWireless(string $wireless): self
-    {
-        $this->wireless = $wireless;
+        $this->wifi = $wifi;
 
         return $this;
     }
@@ -332,16 +307,20 @@ class Produit
         return $this;
     }
 
-    public function getWebcam(): ?string
+    /**
+     * @return bool
+     */
+    public function isWebcam(): bool
     {
         return $this->webcam;
     }
 
-    public function setWebcam(string $webcam): self
+    /**
+     * @param bool $webcam
+     */
+    public function setWebcam(bool $webcam): void
     {
         $this->webcam = $webcam;
-
-        return $this;
     }
 
 
@@ -365,78 +344,6 @@ class Produit
     public function setCategorie(?Categorie $categorie): self
     {
         $this->categorie = $categorie;
-
-        return $this;
-    }
-
-    public function getStockage(): ?Stockage
-    {
-        return $this->stockage;
-    }
-
-    public function setStockage(?Stockage $stockage): self
-    {
-        $this->stockage = $stockage;
-
-        return $this;
-    }
-
-    public function getProcesseur(): ?Processeur
-    {
-        return $this->processeur;
-    }
-
-    public function setProcesseur(?Processeur $processeur): self
-    {
-        $this->processeur = $processeur;
-
-        return $this;
-    }
-
-    public function getMemoire(): ?Memoire
-    {
-        return $this->memoire;
-    }
-
-    public function setMemoire(?Memoire $memoire): self
-    {
-        $this->memoire = $memoire;
-
-        return $this;
-    }
-
-    public function getConnectique(): ?Connectique
-    {
-        return $this->connectique;
-    }
-
-    public function setConnectique(?Connectique $connectique): self
-    {
-        $this->connectique = $connectique;
-
-        return $this;
-    }
-
-    public function getCarteGraphique(): ?CarteGraphique
-    {
-        return $this->carteGraphique;
-    }
-
-    public function setCarteGraphique(?CarteGraphique $carteGraphique): self
-    {
-        $this->carteGraphique = $carteGraphique;
-
-        return $this;
-    }
-
-    public function getBoitier(): ?Boitier
-    {
-        return $this->boitier;
-    }
-
-    public function setBoitier(?Boitier $boitier): self
-    {
-        $this->boitier = $boitier;
 
         return $this;
     }
@@ -473,6 +380,85 @@ class Produit
     }
 
     /**
+     * @return Collection|PieceJointe[]
+     */
+    public function getPieceJointes(): Collection
+    {
+        return $this->pieceJointes;
+    }
+
+    public function addPieceJointe(PieceJointe $pieceJointe): self
+    {
+        if (!$this->pieceJointes->contains($pieceJointe)) {
+            $this->pieceJointes[] = $pieceJointe;
+            $pieceJointe->setProduit($this);
+        }
+
+        return $this;
+    }
+
+    public function removePieceJointe(PieceJointe $pieceJointe): self
+    {
+        if ($this->pieceJointes->contains($pieceJointe)) {
+            $this->pieceJointes->removeElement($pieceJointe);
+            // set the owning side to null (unless already changed)
+            if ($pieceJointe->getProduit() === $this) {
+                $pieceJointe->setProduit(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getCpu(): ?string
+    {
+        return $this->cpu;
+    }
+
+    public function setCpu(string $cpu): self
+    {
+        $this->cpu = $cpu;
+
+        return $this;
+    }
+
+    public function getVga(): ?string
+    {
+        return $this->vga;
+    }
+
+    public function setVga(string $vga): self
+    {
+        $this->vga = $vga;
+
+        return $this;
+    }
+
+    public function getDisqueDur(): ?string
+    {
+        return $this->disqueDur;
+    }
+
+    public function setDisqueDur(string $disqueDur): self
+    {
+        $this->disqueDur = $disqueDur;
+
+        return $this;
+    }
+
+    public function getRam(): ?string
+    {
+        return $this->ram;
+    }
+
+    public function setRam(string $ram): self
+    {
+        $this->ram = $ram;
+
+        return $this;
+    }
+
+    /**
      * @ORM\PrePersist
      */
     public function beforePersiste()
@@ -493,17 +479,5 @@ class Produit
     public function __toString()
     {
         return $this->nom;
-    }
-
-    public function getEcran(): ?Ecran
-    {
-        return $this->ecran;
-    }
-
-    public function setEcran(?Ecran $ecran): self
-    {
-        $this->ecran = $ecran;
-
-        return $this;
     }
 }

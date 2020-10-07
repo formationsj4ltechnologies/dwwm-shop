@@ -7,7 +7,13 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
+/**
+ * Class MarqueCrudController
+ * @package App\Controller\Admin
+ *  @IsGranted("ROLE_ADMIN")
+ */
 class MarqueCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string

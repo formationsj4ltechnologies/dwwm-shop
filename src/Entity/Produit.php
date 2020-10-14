@@ -56,20 +56,10 @@ class Produit
     private $description;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $wifi;
-
-    /**
-     * @ORM\Column(type="boolean", nullable=true)
-     */
-    private $bluetooth = true;
-
-    /**
      * @ORM\Column(type="boolean")
      * @Assert\NotBlank(message="Le champ webcam est requis")
      */
-    private $webcam=true;
+    private $webcam = true;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -283,30 +273,6 @@ class Produit
         return $this;
     }
 
-    public function getWifi(): ?string
-    {
-        return $this->wifi;
-    }
-
-    public function setWifi(string $wifi): self
-    {
-        $this->wifi = $wifi;
-
-        return $this;
-    }
-
-    public function getBluetooth(): ?bool
-    {
-        return $this->bluetooth;
-    }
-
-    public function setBluetooth(?bool $bluetooth): self
-    {
-        $this->bluetooth = $bluetooth;
-
-        return $this;
-    }
-
     /**
      * @return bool
      */
@@ -322,7 +288,6 @@ class Produit
     {
         $this->webcam = $webcam;
     }
-
 
     public function getMarque(): ?Marque
     {

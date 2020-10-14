@@ -14,7 +14,6 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -44,8 +43,6 @@ class ProduitCrudController extends AbstractCrudController
         $dispo = BooleanField::new("dispo", "En Stock ?");
 
         $panelCaracteristique = FormField::addPanel("INFOS CARACTERISTIQUES");
-        $wifi = TextField::new("wifi", "Carte Wifi");
-        $bluetooth = BooleanField::new("bluetooth", "Bluetooth");
         $webcam = BooleanField::new("webcam", "Webcam");
         $cpu = TextField::new("cpu", "Processeur");
         $ram = TextField::new("ram", "Ram");
@@ -69,7 +66,7 @@ class ProduitCrudController extends AbstractCrudController
             ->onlyOnDetail();
 
         $infosProduits = [$panelProduit, $marque, $categorie, $nom, $prix, $dispo, $description];
-        $infosCaracteristiques = [$panelCaracteristique, $wifi, $bluetooth, $webcam, $cpu, $taille, $ram, $vga, $disqueDur];
+        $infosCaracteristiques = [$panelCaracteristique, $webcam, $cpu, $taille, $ram, $vga, $disqueDur];
 
         if ($pageName === Crud::PAGE_INDEX || $pageName === Crud::PAGE_DETAIL) {
             $infosImages = [$panelImage, $imageName, $imageJointeName];

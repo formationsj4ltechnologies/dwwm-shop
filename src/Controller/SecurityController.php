@@ -63,16 +63,13 @@ class SecurityController extends AbstractController
         $form = $this->createForm(UserRegistrationFormType::class);
         $form->handleRequest($request);
 
-        //dd($form->getData());
-
         if ($form->isSubmitted() && $form->isValid()) {
             $user = $form->getData();
-            //dd($user);
+
             $user->setPassword($encoder->encodePassword(
                 $user,
                 $form['plainPassword']->getData()
             ));
-            //dd($user);
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);

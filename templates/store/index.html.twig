@@ -4,7 +4,42 @@
 
 {% block body %}
 	{{ parent() }}
-	<div class="main">
-		<h1>{{ titre_section }}</h1>
-	</div>
+	
+	<main role="main">
+		
+		<div class="album py-5 bg-light">
+			<div class="container">
+				<div class="row">
+					{% if produits is empty %}
+						<div class="alert alert-info" role="alert">
+							Aucun produit n'est disponible dans la boutique
+						</div>
+					{% else %}
+						{% for produit in produits %}
+							<div class="col-md-4">
+								<div class="card mb-4 shadow-sm">
+									<img class="bd-placeholder-img card-img-top" width="100%" height="225"
+									     src="{{ asset('images/produits/') }}{{ produit.imageName }}"
+									     alt="{{ produit.nom }}">
+									<div class="card-body">
+										<span class="h3">{{ produit.nom }}</span>
+										<p class="text-truncate">{{ produit.description }}</p>
+										<div class="d-flex justify-content-between align-items-center">
+											<div class="btn-group">
+												<a class="btn btn-outline-primary btn-sm" href="{{ path('store_produit',{id:produit.id, slug:produit.slug,}) }}">Détails</a>
+												<button type="button" class="btn btn-sm btn-outline-secondary">Panier
+												</button>
+											</div>
+											<small class="text-muted">{{ produit.prix }} €</small>
+										</div>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</main>
+
 {% endblock %}

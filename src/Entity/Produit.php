@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\ProduitRepository;
 use App\Service\DwwmAppInterface;
 use DateTime;
@@ -11,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
@@ -22,6 +24,9 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  *     message="Ce produit existe deja dans le systeme"
  * )
  * @Vich\Uploadable
+ * @ApiResource(
+ *     normalizationContext={"groups" = {"main_produit"}}
+ * )
  */
 class Produit
 {
@@ -29,6 +34,7 @@ class Produit
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"main_produit"})
      */
     private $id;
 
@@ -36,58 +42,69 @@ class Produit
      * @ORM\Column(type="string", length=50)
      * @Assert\NotBlank(message="Veuillez renseigner le nom du produit svp")
      * @Assert\Length(max="50", maxMessage="Le nom du produit ne peut exceder 50 caracteres")
+     * @Groups({"main_produit"})
      */
     private $nom;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups({"main_produit"})
      */
     private $prix;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups({"main_produit"})
      */
     private $dispo = true;
 
     /**
      * @ORM\Column(type="text")
      * @Assert\NotBlank (message="Veuillez renseigner le nom de l'image")
+     * @Groups({"main_produit"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="boolean")
      * @Assert\NotBlank(message="Le champ webcam est requis")
+     * @Groups({"main_produit"})
      */
     private $webcam = true;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"main_produit"})
      */
     private $cpu;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"main_produit"})
      */
     private $ram;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"main_produit"})
      */
     private $vga;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"main_produit"})
      */
     private $taille;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"main_produit"})
      */
     private $disqueDur;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"main_produit"})
      */
     private $imageName;
 
@@ -100,16 +117,19 @@ class Produit
     /**
      * @Gedmo\Slug(fields={"nom"})
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"main_produit"})
      */
     private $slug;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"main_produit"})
      */
     private $createdAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     *
      */
     private $updatedAt;
 

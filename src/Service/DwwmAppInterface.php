@@ -4,8 +4,30 @@
 namespace App\Service;
 
 
+use App\Repository\ProduitRepository;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+
 class DwwmAppInterface
 {
+    /**
+     * @var SessionInterface
+     */
+    private $session;
+    /**
+     * @var ProduitRepository
+     */
+    private $produitRepository;
+
+    public function __construct(SessionInterface $session, ProduitRepository $produitRepository)
+    {
+        $this->session = $session;
+        $this->produitRepository = $produitRepository;
+    }
+
     public static function capitalize(string $chaine)
     {
         return ucwords(mb_strtolower(trim($chaine)));
@@ -24,5 +46,64 @@ class DwwmAppInterface
     public static function concactene(string $prenom, string $nom)
     {
         return $prenom . " " . $nom;
+    }
+
+    /**
+     * Permet de recuperer le contenu du panier
+     * @return array
+     */
+    public function contenuDuPanier(): array
+    {
+        $panier = $this->session->get('panier', []);
+        $contenuDuPanier = [];
+        foreach ($panier as $id => $quantite) {
+            $produit = $this->produitRepository->find($id);
+            $contenuDuPanier[] = [
+                "quantite" => $quantite,
+                "produit" => $produit
+            ];
+        }
+        return $contenuDuPanier;
+    }
+
+    /**
+     * Permet d'ajouter un produit au panier
+     * @param int $id
+     */
+    public function ajouterAuPanier(int $id)
+    {
+        $panier = $this->session->get('panier', []);
+        if (!empty($panier[$id])) {
+            $panier[$id]++;
+        } else {
+            $panier[$id] = 1;
+        }
+        $this->session->set('panier', $panier);
+    }
+
+    /**
+     * Permet de diminuer la quantité s'un produit du panier
+     * @param int $id
+     */
+    public function diminuerQteDuPanier(int $id)
+    {
+        $panier = $this->session->get('panier', []);
+        if (!empty($panier[$id])) {
+            $panier[$id]--;
+        }
+        $this->session->set('panier', $panier);
+    }
+
+    /**
+     * Permet de supprimer  un elament du panier
+     * @param int $id
+     */
+    public function supprimerDuPanier(int $id)
+    {
+        $panier = $this->session->get('panier', []);
+        if (!empty($panier[$id])) {
+            unset($panier[$id]);
+        }
+        $this->session->set('panier', $panier);
     }
 }

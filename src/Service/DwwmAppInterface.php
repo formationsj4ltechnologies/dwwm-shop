@@ -58,10 +58,13 @@ class DwwmAppInterface
         $contenuDuPanier = [];
         foreach ($panier as $id => $quantite) {
             $produit = $this->produitRepository->find($id);
-            $contenuDuPanier[] = [
-                "quantite" => $quantite,
-                "produit" => $produit
-            ];
+            if ($quantite && $produit->getDispo()) {
+                $contenuDuPanier[] = [
+                    "quantite" => $quantite,
+                    "produit" => $produit,
+                    "sous_total" => $quantite * $produit->getPrix()
+                ];
+            }
         }
         return $contenuDuPanier;
     }
@@ -106,4 +109,5 @@ class DwwmAppInterface
         }
         $this->session->set('panier', $panier);
     }
+
 }

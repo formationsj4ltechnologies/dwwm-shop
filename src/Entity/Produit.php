@@ -54,51 +54,43 @@ class Produit
 
     /**
      * @ORM\Column(type="boolean")
-     * @Groups({"main_produit"})
      */
     private $dispo = true;
 
     /**
      * @ORM\Column(type="text")
      * @Assert\NotBlank (message="Veuillez renseigner le nom de l'image")
-     * @Groups({"main_produit"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="boolean")
      * @Assert\NotBlank(message="Le champ webcam est requis")
-     * @Groups({"main_produit"})
      */
     private $webcam = true;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"main_produit"})
      */
     private $cpu;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"main_produit"})
      */
     private $ram;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"main_produit"})
      */
     private $vga;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"main_produit"})
      */
     private $taille;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"main_produit"})
      */
     private $disqueDur;
 
@@ -117,13 +109,11 @@ class Produit
     /**
      * @Gedmo\Slug(fields={"nom"})
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"main_produit"})
      */
     private $slug;
 
     /**
      * @ORM\Column(type="datetime")
-     * @Groups({"main_produit"})
      */
     private $createdAt;
 

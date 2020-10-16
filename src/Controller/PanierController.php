@@ -61,7 +61,7 @@ class PanierController extends AbstractController
      * @return RedirectResponse
      */
     public function supprimer(int $id){
-        $this->appService->diminuerQteDuPanier($id);
+        $this->appService->supprimerDuPanier($id);
         return $this->redirectToRoute("panier_contenu");
     }
 }

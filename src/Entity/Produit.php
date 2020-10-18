@@ -433,6 +433,14 @@ class Produit
         return $this;
     }
 
+    public function getImageUrl(?string $imageName = null)
+    {
+        if (!$imageName) {
+            return DwwmAppInterface::getImageUrl($this->getImageName());
+        }
+        return DwwmAppInterface::getImageUrl($imageName);
+    }
+
     /**
      * @ORM\PrePersist
      */

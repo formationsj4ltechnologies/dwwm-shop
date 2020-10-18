@@ -11,7 +11,7 @@ body {
 //LOGO
 .logo {
   font-family: 'Monoton', cursive;
-  font-size: 1.5rem;
+  font-size: 1rem;
   text-transform: uppercase;
   color: #dcedc8 !important;
 
@@ -25,19 +25,18 @@ body {
   padding: 0 1rem;
 
   i {
-    font-size: 1.2rem;
+    font-size: .9rem;
   }
 
   .navbar-nav {
-
     .btn, .form-control {
       border-radius: 0;
     }
 
     .nav-item {
       font-family: 'Poiret One', cursive;
-      font-size: 1.5rem;
-      padding: 1rem;
+      font-size: 1.1rem;
+      padding: .8rem;
       margin: .1rem .2rem;
 
       .nav-link {
@@ -52,7 +51,7 @@ body {
 
     .dropdown-menu {
       border-radius: 0;
-      font-size: 1.2rem;
+      font-size: .9rem;
 
       .dropdown-item {
         a {
@@ -157,24 +156,6 @@ body {
 //PRODUIT
 .container {
   max-width: 960px;
-}
-
-/*
- * Custom translucent site header
- */
-
-.site-header {
-  background-color: rgba(0, 0, 0, .85);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  backdrop-filter: saturate(180%) blur(20px);
-}
-.site-header a {
-  color: #999;
-  transition: ease-in-out color .15s;
-}
-.site-header a:hover {
-  color: #fff;
-  text-decoration: none;
 }
 
 /*

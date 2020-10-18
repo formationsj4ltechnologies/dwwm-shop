@@ -18,15 +18,16 @@
 						{% for produit in produits %}
 							<div class="col-md-4">
 								<div class="card mb-4 shadow-sm">
-									<img class="bd-placeholder-img card-img-top" width="100%" height="225"
-									     src="{{ asset('images/produits/') }}{{ produit.imageName }}"
+									<img class="bd-placeholder-img card-img-top"
+									     src="{{ vich_uploader_asset(produit, 'imageFile')|imagine_filter('echelle') }}"
 									     alt="{{ produit.nom }}">
 									<div class="card-body">
 										<span class="h3">{{ produit.nom }}</span>
 										<p class="text-truncate">{{ produit.description }}</p>
 										<div class="d-flex justify-content-between align-items-center">
 											<div class="btn-group">
-												<a class="btn btn-outline-primary btn-sm" href="{{ path('store_produit',{id:produit.id, slug:produit.slug,}) }}">Détails</a>
+												<a class="btn btn-outline-primary btn-sm"
+												   href="{{ path('store_produit',{id:produit.id, slug:produit.slug,}) }}">Détails</a>
 												<button type="button" class="btn btn-sm btn-outline-secondary">Panier
 												</button>
 											</div>

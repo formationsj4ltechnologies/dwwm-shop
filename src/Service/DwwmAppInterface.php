@@ -6,10 +6,6 @@ namespace App\Service;
 
 use App\Repository\ProduitRepository;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Encoder\XmlEncoder;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\Serializer;
 
 class DwwmAppInterface
 {
@@ -110,4 +106,12 @@ class DwwmAppInterface
         $this->session->set('panier', $panier);
     }
 
+    /**
+     * @param string $imageName
+     * @return string
+     */
+    public static function getImageUrl(string $imageName)
+    {
+        return "images/produits/" . $imageName;
+    }
 }

@@ -26,7 +26,7 @@ class StoreController extends AbstractController
      */
     public function accueil()
     {
-        return $this->render('store/index.html.twig',
+        return $this->render('store/produits.html.twig',
             [
                 'titre_page' => $titrePage = "Accueil",
                 'titre_section' => $titreSection = "page accueil",

@@ -169,18 +169,24 @@ body {
   margin-right: 0.5rem;
 }
 .album .card .card-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   margin: 1.5rem 0 0;
   width: 100%;
   padding: 1.5rem 1.25rem;
   background-color: #eeeeee;
 }
 .album .card .card-footer .btn-detail, .album .card .card-footer .btn-panier {
-  padding: 0.5rem 1rem;
+  padding: 0.8rem 1rem;
   width: 100%;
-  background-color: #37474f;
+  background-color: #81c784;
   margin-right: 0.3rem;
-  color: whitesmoke;
+  color: #1d64a4;
+  text-transform: uppercase;
   text-decoration: none;
+  font-size: 0.8rem;
+  border-radius: 2rem;
 }
 .album .card .card-footer .btn-detail span, .album .card .card-footer .btn-panier span {
   font-size: 1rem;
@@ -188,6 +194,9 @@ body {
 .album .card .card-footer .btn-detail:hover, .album .card .card-footer .btn-panier:hover {
   background-color: #b0bec5;
   color: #0c5460;
+}
+.album .card .card-footer .text-prix small {
+  color: #1d64a4;
 }
 
 @media (min-width: 923px) {

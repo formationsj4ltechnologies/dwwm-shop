@@ -42,15 +42,15 @@
 										<div class="left_emoji mt-2">
 											<span>💾</span>{{ produit.disqueDur }}
 										</div>
-										<div class="d-flex justify-content-between align-items-center card-footer">
-											<div>
-												<small class="text-muted">{{ produit.prix }} €</small>
+										<div class="card-footer">
+											<div class="text-prix">
+												<small>{{ produit.prix }} €</small>
 											</div>
 											<div>
-												<a class="btn-panier text-uppercase" href="#">panier <span>🛒</span></a>
+												<a class="btn-panier" href="#">panier <span>🛒</span></a>
 											</div>
 											<div>
-												<a class="btn-detail text-uppercase small"
+												<a class="btn-detail"
 											        href="{{ path('store_produit',{id:produit.id, slug:produit.slug,}) }}">Détails
 													<span>👉</span>
 												</a>

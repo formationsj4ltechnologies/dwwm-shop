@@ -47,10 +47,10 @@
 												<small class="text-muted">{{ produit.prix }} €</small>
 											</div>
 											<div>
-												<button type="button" class="btn btn-sm btn-outline-secondary">Panier</button>
+												<a class="btn-panier text-uppercase" href="#">panier <span>🛒</span></a>
 											</div>
 											<div>
-												<a class="btn-detail"
+												<a class="btn-detail text-uppercase small"
 											        href="{{ path('store_produit',{id:produit.id, slug:produit.slug,}) }}">Détails
 													<span>👉</span>
 												</a>

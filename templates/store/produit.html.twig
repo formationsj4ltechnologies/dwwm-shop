@@ -2,37 +2,33 @@
 
 {% block body %}
 	{{ parent() }}
-	<div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
-		<div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-			<div class="my-3 p-3">
-				<h2 class="display-5">{{ produit.nom }}</h2>
-				<p class="lead">{{ produit.prix }}.</p>
-			</div>
-			<div class="bg-white shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
-				<img class="img-fluid" src="{{ vich_uploader_asset(produit, 'imageFile') }}" alt="{{ produit.nom }}">
-			</div>
+	
+	<main class="contanier">
+		<div class="container__laptop">
+			<figure class="laptop">
+				<p class="laptop__price">$3199</p>
+				<a href="{{ path('store_accueil') }}" class="laptop__back"><span class="emoji-left">👈</span>Accueil</a>
+				<div class="laptop__hero">
+					<img src="{{ vich_uploader_asset(produit,'imageFile') }}" alt="" class="laptop__img img-fluid">
+				</div>
+				<h2 class="laptop__name">{{ produit.nom }}</h2>
+				<div class="laptop__details">
+					<p><span class="emoji-left">🖥</span> {{ produit.vga }}</p>
+					<p><span class="emoji-left">🧮</span> {{ produit.cpu }}</p>
+					<p><span class="emoji-left">💾</span> {{ produit.disqueDur }}</p>
+					<p><span class="emoji-left">📦</span> {{ produit.ram }}</p>
+				</div>
+				<div class="laptop__description">
+					{{ produit.description|raw }}
+				</div>
+				<p class="laptop__source">Source: <a
+							href="https://www.techradar.com/news/mobile-computing/laptops/best-laptops-1304361"
+							target="_blank">https://www.techradar.com/news/mobile-computing/laptops/best-laptops-1304361</a>
+				</p>
+				<a href="#" class="laptop__link">Buy now for $3199 <span class="emoji-right">🥳 😍</span></a>
+			</figure>
 		</div>
-		<div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-			<div class="my-3 py-3">
-				<h2 class="display-5">Fiche Technique</h2>
-			</div>
-			<div class="bg-white shadow-sm mx-auto"
-			     style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
-				<p>{{ produit.marque }}</p>
-				<p>{{ produit.categorie }}</p>
-				<p>{{ produit.cpu }}</p>
-			</div>
-		</div>
-		<div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-			<div class="my-3 py-3">
-				<h2 class="display-5">Description</h2>
-			</div>
-			<div class="bg-white shadow-sm mx-auto"
-			     style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
-				{{ produit.description | raw}}
-			</div>
-		</div>
-	</div>
+	</main>
 {% endblock %}
 
 {% block title %}

@@ -7,7 +7,7 @@
 	
 	<main role="main">
 		
-		<div class="album py-5 bg-light">
+		<div class="album py-5">
 			<div class="container">
 				<div class="row">
 					{% if produits is empty %}
@@ -17,11 +17,11 @@
 					{% else %}
 						{% for produit in produits %}
 							<div class="col-md-4">
-								<div class="card mb-4 shadow-sm">
+								<div class="card mb-4">
 									<div class="card__header">
 										<div class="card__picture">
 											<div class="card__picture-overlay">&nbsp;</div>
-											<img class="card-img-top img-fluid"
+											<img class="card-img-top img-fluid im"
 											     src="{{ vich_uploader_asset(produit, 'imageFile') }}"
 											     alt="{{ produit.nom }}">
 											<div class="heading-tertirary">
@@ -44,14 +44,11 @@
 										</div>
 										<div class="card-footer">
 											<div class="text-prix">
-												<small>{{ produit.prix }} €</small>
-											</div>
-											<div>
-												<a class="btn-panier" href="#">panier <span>🛒</span></a>
+												<small>{{ produit.prix|format_currency('EUR') }} </small>
 											</div>
 											<div>
 												<a class="btn-detail"
-											        href="{{ path('store_produit',{id:produit.id, slug:produit.slug,}) }}">Détails
+												   href="{{ path('store_produit',{id:produit.id, slug:produit.slug,}) }}">Détails
 													<span>👉</span>
 												</a>
 											</div>

@@ -49,15 +49,60 @@ body {
         transform: translateY(-2px);
         color: white;
       }
-    }
 
-    .dropdown-menu {
-      border-radius: 0;
-      font-size: .9rem;
+      .dropdown-menu {
+        border-radius: 0;
+        display: inline-block;
+        min-width: 350px;
+        left: 0;
+        border: none;
 
-      .dropdown-item {
-        a {
-          color: #444 !important;
+        table {
+          //.dropdown-item {
+          a {
+            font-size: 1rem;
+            color: #444 !important;
+          }
+
+          td {
+            vertical-align: middle;
+            padding: 0 1rem;
+            text-align: center;
+
+            i {
+              font-size: 1.2rem;
+            }
+          }
+
+          .article-produit-image {
+            padding: 0;
+            width: 20%;
+          }
+
+          .article-produit-nom-prix {
+            font-weight: bolder;
+            font-size: 1rem;
+
+            .prix {
+              font-style: italic;
+              font-size: .7rem;
+            }
+          }
+
+          .article-produit-quantite {
+            .augmenter {
+              color: #26a69a;
+            }
+
+            .diminuer {
+              color: #f57c00;
+            }
+          }
+
+          .article-produit-supprimer {
+
+            color: #e53935;
+          }
         }
       }
     }

@@ -37,12 +37,45 @@ body {
   transform: translateY(-2px);
   color: white;
 }
-.navbar .navbar-nav .dropdown-menu {
+.navbar .navbar-nav .nav-item .dropdown-menu {
   border-radius: 0;
-  font-size: 0.9rem;
+  display: inline-block;
+  min-width: 350px;
+  left: 0;
+  border: none;
 }
-.navbar .navbar-nav .dropdown-menu .dropdown-item a {
+.navbar .navbar-nav .nav-item .dropdown-menu table a {
+  font-size: 1rem;
   color: #444 !important;
+}
+.navbar .navbar-nav .nav-item .dropdown-menu table td {
+  vertical-align: middle;
+  padding: 0 1rem;
+  text-align: center;
+}
+.navbar .navbar-nav .nav-item .dropdown-menu table td i {
+  font-size: 1.2rem;
+}
+.navbar .navbar-nav .nav-item .dropdown-menu table .article-produit-image {
+  padding: 0;
+  width: 20%;
+}
+.navbar .navbar-nav .nav-item .dropdown-menu table .article-produit-nom-prix {
+  font-weight: bolder;
+  font-size: 1rem;
+}
+.navbar .navbar-nav .nav-item .dropdown-menu table .article-produit-nom-prix .prix {
+  font-style: italic;
+  font-size: 0.7rem;
+}
+.navbar .navbar-nav .nav-item .dropdown-menu table .article-produit-quantite .augmenter {
+  color: #26a69a;
+}
+.navbar .navbar-nav .nav-item .dropdown-menu table .article-produit-quantite .diminuer {
+  color: #f57c00;
+}
+.navbar .navbar-nav .nav-item .dropdown-menu table .article-produit-supprimer {
+  color: #e53935;
 }
 
 .login-form {

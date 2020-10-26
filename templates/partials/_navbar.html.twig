@@ -1,75 +1,73 @@
 {# DEBUT NAVBAR #}
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #444">
-	<a class="navbar-brand logo" href="{{ path('store_accueil') }}" title="Accueil du site">dwwm-shop</a>
-	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-	        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span>
-	</button>
-	
-	<div class="collapse navbar-collapse" id="navbarSupportedContent">
-		<ul class="navbar-nav mr-auto">
-			<li class="nav-item">
-				<a class="nav-link" href="#"><i class="fas fa-list"></i> Catalogue <span
-							class="sr-only">(current)</span></a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#"><i class="fas fa-address-book"></i> Contact</a>
-			</li>
-		</ul>
-		<form class="form-inline my-2 my-lg-0 mr-auto">
-			<div class="input-group">
-				<input class="form-control mr-sm-1" type="search" placeholder="Recherche..." aria-label="Search">
-				<div class="input-group-prepend">
-					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-						<i class="fas fa-search"></i>
-					</button>
-				</div>
-			</div>
-		</form>
-		<ul class="navbar-nav">
-			{% if is_granted('ROLE_ADMIN') %}
-				<li class="nav-item">
-					<a class="nav-link" href="{{ path('bo_accueil') }}"><i class="fas fa-tachometer-alt"></i>
-						Dashboard<span class="sr-only">(current)</span></a>
-				</li>
-			{% else %}
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-					   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<i class="fas fa-shopping-cart"></i> Panier
-					</a>
-					<div class="dropdown-menu contenu-panier" aria-labelledby="navbarDropdown">
-{#						<a class="dropdown-item" href="#">Action</a>#}
-{#						<div class="dropdown-divider"></div>#}
-{#						<a class="dropdown-item" href="#">Another action</a>#}
-{#						<div class="dropdown-divider"></div>#}
-{#						<a class="dropdown-item" href="#">Something else here</a>#}
-					</div>
-				</li>
-			{% endif %}
-			
-			{% if is_granted('ROLE_USER') %}
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-					   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<i class="fas fa-user-circle"></i> Mon Compte
-					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="#">Action</a>
-						<a class="dropdown-item" href="#">Another action</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="{{ path('app_logout') }}"><i class="fas fa-power-off"></i> Logout</a>
-					</div>
-				</li>
-			{% else %}
-				<li class="nav-item">
-					<a class="nav-link" href="{{ path('app_login') }}"><i class="fas fa-user"></i> Login</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="{{ path('app_register') }}"><i class="fas fa-registered"></i> Register</a>
-				</li>
-			{% endif %}
-		</ul>
-	</div>
+    <a class="navbar-brand logo" href="{{ path('store_accueil') }}" title="Accueil du site">dwwm-shop</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fas fa-list"></i> Catalogue <span
+                            class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fas fa-address-book"></i> Contact</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0 mr-auto">
+            <div class="input-group">
+                <input class="form-control mr-sm-1" type="search" placeholder="Recherche..." aria-label="Search">
+                <div class="input-group-prepend">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+        <ul class="navbar-nav">
+            {% if is_granted('ROLE_ADMIN') %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('bo_accueil') }}"><i class="fas fa-tachometer-alt"></i>
+                        Dashboard<span class="sr-only">(current)</span></a>
+                </li>
+            {% else %}
+                <li class="nav-item dropdown">
+                    <span class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-shopping-cart"></i> Panier
+                    </span>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <table class="table table-sm border-0 panier">
+                            <tbody class="contenu-panier bo"></tbody>
+                        </table>
+                    </div>
+                </li>
+            {% endif %}
+
+            {% if is_granted('ROLE_USER') %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user-circle"></i> Mon Compte
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{ path('app_logout') }}"><i class="fas fa-power-off"></i> Logout</a>
+                    </div>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_login') }}"><i class="fas fa-user"></i> Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_register') }}"><i class="fas fa-registered"></i> Register</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
 </nav>
-{# FIN NAVBAR      #}
+{# FIN NAVBAR        #}

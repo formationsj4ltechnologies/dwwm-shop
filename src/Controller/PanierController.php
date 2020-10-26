@@ -31,18 +31,20 @@ class PanierController extends AbstractController
         return $this->json(
             [
                 'panier' => $contenuDuPanier
-            ]);
+            ]
+        );
     }
 
     /**
-     * @Route("/ajouter/{id}", name="ajouter")
+     * @Route("/ajouter/{id}-{slug}", name="ajouter")
      * @param int $id
+     * @param string $slug
      * @return RedirectResponse
      */
-    public function ajouter(int $id)
+    public function ajouter(int $id, string $slug)
     {
         $this->appService->ajouterAuPanier($id);
-        return $this->redirectToRoute("panier_contenu");
+        return $this->redirectToRoute("store_produit", ['id' => $id, 'slug' => $slug]);
     }
 
     /**
@@ -50,7 +52,8 @@ class PanierController extends AbstractController
      * @param int $id
      * @return RedirectResponse
      */
-    public function dimunier(int $id){
+    public function dimunier(int $id)
+    {
         $this->appService->diminuerQteDuPanier($id);
         return $this->redirectToRoute("panier_contenu");
     }
@@ -60,7 +63,8 @@ class PanierController extends AbstractController
      * @param int $id
      * @return RedirectResponse
      */
-    public function supprimer(int $id){
+    public function supprimer(int $id)
+    {
         $this->appService->supprimerDuPanier($id);
         return $this->redirectToRoute("panier_contenu");
     }

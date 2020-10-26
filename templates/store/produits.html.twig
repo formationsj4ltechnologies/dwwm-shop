@@ -16,7 +16,7 @@
 						</div>
 					{% else %}
 						{% for produit in produits %}
-							<div class="col-md-4">
+							<div id="{{ produit.slug }}" class="col-md-4">
 								<div class="card mb-4">
 									<div class="card__header">
 										<div class="card__picture">

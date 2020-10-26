@@ -1,37 +1,34 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-	{{ parent() }}
-	
-	<main class="contanier">
-		<div class="container__laptop">
-			<figure class="laptop">
-				<p class="laptop__price">$3199</p>
-				<a href="{{ path('store_accueil') }}" class="laptop__back"><span class="emoji-left">👈</span>Accueil</a>
-				<div class="laptop__hero">
-					<img src="{{ vich_uploader_asset(produit,'imageFile') }}" alt="" class="laptop__img img-fluid">
-				</div>
-				<h2 class="laptop__name">{{ produit.nom }}</h2>
-				<div class="laptop__details">
-					<p><span class="emoji-left">🖥</span> {{ produit.vga }}</p>
-					<p><span class="emoji-left">🧮</span> {{ produit.cpu }}</p>
-					<p><span class="emoji-left">💾</span> {{ produit.disqueDur }}</p>
-					<p><span class="emoji-left">📦</span> {{ produit.ram }}</p>
-				</div>
-				<div class="laptop__description">
-					{{ produit.description|raw }}
-				</div>
-				<p class="laptop__source">Source: <a
-							href="https://www.techradar.com/news/mobile-computing/laptops/best-laptops-1304361"
-							target="_blank">https://www.techradar.com/news/mobile-computing/laptops/best-laptops-1304361</a>
-				</p>
-				<a href="#" class="laptop__link">Buy now for $3199 <span class="emoji-right">🥳 😍</span></a>
-			</figure>
-		</div>
-	</main>
+    {{ parent() }}
+
+    <main class="contanier">
+        <div class="container__laptop">
+            <figure class="laptop">
+                <p class="laptop__price">{{ produit.prix }} €</p>
+                <a href="{{ path('store_accueil') }}#{{ produit.slug }}" class="laptop__back"><span class="emoji-left">👈</span>Accueil</a>
+                <div class="laptop__hero">
+                    <img src="{{ vich_uploader_asset(produit,'imageFile') }}" alt="" class="laptop__img img-fluid">
+                </div>
+                <h2 class="laptop__name">{{ produit.nom }}</h2>
+                <div class="laptop__details">
+                    <p><span class="emoji-left">🖥</span> {{ produit.vga }}</p>
+                    <p><span class="emoji-left">🧮</span> {{ produit.cpu }}</p>
+                    <p><span class="emoji-left">💾</span> {{ produit.disqueDur }}</p>
+                    <p><span class="emoji-left">📦</span> {{ produit.ram }}</p>
+                </div>
+                <div class="laptop__description">
+                    {{ produit.description|raw }}
+                </div>
+                <a href="{{ path('panier_ajouter',{id:produit.id, slug:produit.slug}) }}" class="laptop__link">ajouter au panier<span
+                            class="emoji-right">🥳 😍</span></a>
+            </figure>
+        </div>
+    </main>
 {% endblock %}
 
 {% block title %}
-	{{ titre_page }}
+    {{ titre_page }}
 {% endblock %}
 

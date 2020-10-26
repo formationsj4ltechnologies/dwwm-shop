@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Aladin&family=Chakra+Petch:wght@600&family=Bungee+Inline&family=Monoton&family=Fredoka+One&family=Poiret+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lora&family=Aladin&family=Chakra+Petch:wght@600&family=Bungee+Inline&family=Monoton&family=Fredoka+One&family=Poiret+One&display=swap");
 body {
   box-sizing: border-box;
   color: #444;
@@ -227,18 +227,46 @@ body {
   right: -3rem;
   z-index: 100;
   background: linear-gradient(to right bottom, #67b26f, #4ca2cd);
-  height: 14rem;
-  width: 14rem;
-  border: 6px solid white;
+  height: 8rem;
+  width: 8rem;
+  border: 5px solid white;
   border-radius: 50%;
-  transform: rotate(15deg);
+  transform: rotate(20deg);
   box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.4);
   color: white;
-  font-size: 3rem;
+  font-size: 1.2rem;
   font-family: "Bungee Inline", sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.container__laptop .laptop .laptop__back {
+  font-family: "Lora", serif;
+}
+.container__laptop .laptop .laptop__back:link, .container__laptop .laptop .laptop__back:visited {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  font-size: 1.5rem;
+  color: white;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  z-index: 1;
+  border: 2px solid white;
+  border-radius: 100rem;
+  padding: 0 2rem;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+}
+.container__laptop .laptop .laptop__back .emoji-left {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+}
+.container__laptop .laptop .laptop__back:hover, .container__laptop .laptop .laptop__back:active {
+  background-color: white;
+  color: #555;
 }
 .container__laptop .laptop .laptop__hero {
   position: relative;
@@ -258,37 +286,7 @@ body {
   width: 100%;
   display: block;
 }
-
-.laptop__back:link, .laptop__back:visited {
-  position: absolute;
-  top: 2rem;
-  left: 2rem;
-  font-size: 1.5rem;
-  color: white;
-  font-weight: 700;
-  text-transform: uppercase;
-  text-decoration: none;
-  z-index: 1;
-  border: 2px solid white;
-  border-radius: 100rem;
-  padding: 0 2rem;
-  transition: all 0.3s;
-  display: flex;
-  align-items: center;
-}
-
-.emoji-left {
-  font-size: 2rem;
-  margin-right: 1rem;
-}
-
-.laptop__back:hover,
-.laptop__back:active {
-  background-color: white;
-  color: #555;
-}
-
-.laptop__name {
+.container__laptop .laptop .laptop__name {
   background: linear-gradient(to right, #67b26f, #4ca2cd);
   padding: 1.75rem 1rem;
   font-family: "Bungee Inline", sans-serif;
@@ -298,27 +296,30 @@ body {
   text-align: center;
   word-spacing: 2px;
 }
-
-.laptop__details {
+.container__laptop .laptop .laptop__details {
   background-color: #eee;
-  padding: 4rem 6rem;
-  font-size: 1.5rem;
+  padding: 2rem 4rem;
+  font-size: 1rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 1.75rem;
 }
-
-.laptop__description {
-  padding: 5rem 6rem;
-  font-size: 1.6rem;
-  line-height: 1.8;
+.container__laptop .laptop .laptop__details .emoji-left {
+  font-size: 1.2rem;
 }
-
-.laptop__link:link,
-.laptop__link:visited {
+.container__laptop .laptop .laptop__description {
+  padding: 2rem 2rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  text-align: justify;
+}
+.container__laptop .laptop h2 {
+  margin-bottom: 0;
+}
+.container__laptop .laptop .laptop__link:link, .container__laptop .laptop .laptop__link:visited {
   background-color: #5aaa9d;
   color: white;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   font-weight: 700;
   text-transform: uppercase;
   text-decoration: none;
@@ -328,11 +329,14 @@ body {
   align-items: center;
   justify-content: center;
   transition: all 0.3s;
+  margin-bottom: 1rem;
 }
-
-.laptop__link:hover,
-.laptop__link:active {
+.container__laptop .laptop .laptop__link:hover, .container__laptop .laptop .laptop__link:active {
   background-color: #67b26f;
+}
+.container__laptop .laptop .laptop__link .emoji-right {
+  font-size: 2rem;
+  margin-left: 1rem;
 }
 
 .laptop__source {
@@ -340,30 +344,16 @@ body {
   color: #999;
   font-size: 1.2rem;
 }
-
-.laptop__source a:link,
-.laptop__source a:visited {
+.laptop__source a:link, .laptop__source a:visited {
   color: #999;
 }
-
-.laptop__source a:hover,
-.laptop__source a:active {
+.laptop__source a:hover, .laptop__source a:active {
   color: #555;
-}
-
-.emoji-right {
-  font-size: 2rem;
-  margin-left: 1rem;
 }
 
 @media (min-width: 768px) {
   .bd-placeholder-img-lg {
     font-size: 3.5rem;
-  }
-}
-@media (min-width: 923px) {
-  .bd-placeholder-img-lg {
-    font-size: 3rem;
   }
 }
 

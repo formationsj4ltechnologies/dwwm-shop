@@ -109,6 +109,7 @@ class Produit
     /**
      * @Gedmo\Slug(fields={"nom"})
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"main_produit"})
      */
     private $slug;
 

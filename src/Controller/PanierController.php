@@ -73,11 +73,11 @@ class PanierController extends AbstractController
     /**
      * @Route("/supprimer/{id}", name="supprimer")
      * @param int $id
-     * @return RedirectResponse
+     * @return JsonResponse
      */
     public function supprimer(int $id)
     {
         $this->appService->supprimerDuPanier($id);
-        return $this->redirectToRoute("panier_contenu");
+        return $this->json(["resultat" => "OK"]);
     }
 }

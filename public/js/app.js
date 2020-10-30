@@ -30,7 +30,7 @@ $(document).ready(function () {
                             <i id="diminuer-${article.produit.id}" onclick="diminuer(${article.produit.id})" class="fas fa-arrow-circle-down diminuer"></i>
                         </td>    
                         <td class="article-produit-supprimer">
-                            <i class="fas fa-trash"></i>
+                            <i id="supprimer-${article.produit.id}" onclick="supprimer(${article.produit.id})"  class="fas fa-trash"></i>
                         </td>                    
                     </tr>                                             
                     `
@@ -56,7 +56,23 @@ function diminuer(id) {
         url: `/panier/diminuer/${id}`,
         method: 'GET'
     }).done(function (data) {
-        $(`#quantite-${id}`).text(data.quantite);
+        let qte = data.quantite;
+        if (qte > 0) {
+            $(`#quantite-${id}`).text(data.quantite);
+        } else {
+            $(`#ligne-${id}`).fadeOut(1000);
+        }
+    })
+}
+
+function supprimer(id) {
+    $.ajax({
+        url: `/panier/supprimer/${id}`,
+        method: 'GET'
+    }).done(function (data) {
+        if (data.resultat === 'OK') {
+            $(`#ligne-${id}`).fadeOut(1000);
+        }
     })
 }
 

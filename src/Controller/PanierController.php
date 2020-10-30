@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Service\DwwmAppInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -50,12 +51,23 @@ class PanierController extends AbstractController
     /**
      * @Route("/diminuer/{id}", name="diminuer")
      * @param int $id
-     * @return RedirectResponse
+     * @return JsonResponse
      */
     public function dimunier(int $id)
     {
-        $this->appService->diminuerQteDuPanier($id);
-        return $this->redirectToRoute("panier_contenu");
+        $quantite = $this->appService->diminuerQteDuPanier($id);
+        return $this->json(['quantite' => $quantite]);
+    }
+
+    /**
+     * @Route("/augmenter/{id}", name="augmenter")
+     * @param int $id
+     * @return JsonResponse
+     */
+    public function augmenter(int $id)
+    {
+        $quantite = $this->appService->augmenterQteDuPanier($id);
+        return $this->json(['quantite' => $quantite]);
     }
 
     /**

@@ -83,14 +83,31 @@ class DwwmAppInterface
     /**
      * Permet de diminuer la quantité s'un produit du panier
      * @param int $id
+     * @return int
      */
-    public function diminuerQteDuPanier(int $id)
+    public function diminuerQteDuPanier(int $id): int
     {
         $panier = $this->session->get('panier', []);
         if (!empty($panier[$id])) {
             $panier[$id]--;
         }
         $this->session->set('panier', $panier);
+        return $panier[$id];
+    }
+
+    /**
+     * Permet de diminuer la quantité s'un produit du panier
+     * @param int $id
+     * @return int
+     */
+    public function augmenterQteDuPanier(int $id): int
+    {
+        $panier = $this->session->get('panier', []);
+        if (!empty($panier[$id])) {
+            $panier[$id]++;
+        }
+        $this->session->set('panier', $panier);
+        return $panier[$id];
     }
 
     /**

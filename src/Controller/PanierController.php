@@ -59,7 +59,16 @@ class PanierController extends AbstractController
         return $this->json(['quantite' => $quantite]);
     }
 
-
+    /**
+     * @Route("/augmenter/{id}", name="augmenter")
+     * @param int $id
+     * @return JsonResponse
+     */
+    public function augmenter(int $id)
+    {
+        $quantite = $this->appService->augmenterQteDuPanier($id);
+        return $this->json(['quantite' => $quantite]);
+    }
 
     /**
      * @Route("/supprimer/{id}", name="supprimer")

@@ -42,4 +42,21 @@ $(document).ready(function () {
     });
 });
 
+function augmenter(id) {
+    $.ajax({
+        url: `/panier/augmenter/${id}`,
+        method: 'GET'
+    }).done(function (data) {
+        $(`#quantite-${id}`).text(data.quantite);
+    })
+}
+
+function diminuer(id) {
+    $.ajax({
+        url: `/panier/diminuer/${id}`,
+        method: 'GET'
+    }).done(function (data) {
+        $(`#quantite-${id}`).text(data.quantite);
+    })
+}
 

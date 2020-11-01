@@ -1,0 +1,121 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ titre_page }}
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    {# {{ dump(articles) }} #}
+    <div class="py-5 text-center titre text-uppercase">
+        <h2>formulaire de paiement</h2>
+    </div>
+    <div class=" checkout">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 order-md-1">
+                    <h4 class="mb-3">
+                        <span class="text-muted text-capitalize">Adresse de livraison</span>
+                    </h4>
+                    <form class="needs-validation" novalidate>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="numero">Numéro</label>
+                                <input type="text" class="form-control" id="numero" placeholder="Numéro de la voie"
+                                       required>
+                                <div class="invalid-feedback">
+                                    Le numero de la voie est requis.
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="voie">Nom de la voie</label>
+                                <input type="text" class="form-control" id="voie" placeholder="Le nom de la voie"
+                                       value="" required>
+                                <div class="invalid-feedback">
+                                    Le nom de la voie est requis.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-4 mb-3">
+                                <label for="codePoste">Code postal</label>
+                                <input type="text" class="form-control" id="codePoste" placeholder="Le code postal"
+                                       value="" required>
+                                <div class="invalid-feedback">
+                                    Le code postal est requis.
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <label for="ville">Ville</label>
+                                <input type="text" class="form-control" id="ville" placeholder="Votre ville"
+                                       value="" required>
+                                <div class="invalid-feedback">
+                                    Le nom de la ville est requis.
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <label for="pays">Ville</label>
+                                <input type="text" class="form-control" id="pays" placeholder="Votre Pays"
+                                       value="France" required>
+                                <div class="invalid-feedback">
+                                    Le nom du pays est requis.
+                                </div>
+                            </div>
+
+                        </div>
+                        <hr class="mb-4">
+                        <button class="btn btn-primary btn-lg btn-block mb-2" type="submit">Valider</button>
+                    </form>
+                </div>
+
+                {# LES ATICLES DU PANIERS #}
+                <div class="col-md-4 order-md-2 mb-4 panier">
+                    <h4 class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-muted">Votre Panier</span>
+                        <span class="badge badge-secondary badge-pill">{{ articles|length }}</span>
+                    </h4>
+                    <ul class="list-group mb-3">
+                        {% for article in articles %}
+                            <li class="list-group-item d-flex justify-content-between lh-condensed">
+                                <div>
+                                    <h6 class="my-0">
+                                        <img class="img-fluid card-img-top"
+                                             src="{{ vich_uploader_asset(article['produit'], 'imageFile') }}"
+                                             alt="{{ article['produit'].nom }}">
+                                    </h6>
+                                </div>
+                                <div class="d-flex flex-column">
+                                    <small class="text-muted">{{ article['produit'].marque.nom }}</small>
+                                    <small class="text-muted">{{ article['produit'].nom }}</small>
+                                </div>
+                                <small class="text-muted">{{ article['produit'].prix }}€</small>
+                                <span>
+                                <a href="">
+                                    <i class="fas fa-arrow-circle-up augmenter text-info"></i>
+                                </a>
+                                <small class="text-muted">{{ article['quantite'] }}</small>
+                                <a href="">
+                                    <i class="fas fa-arrow-circle-down diminuer text-warning"></i>
+                                </a>
+                            </span>
+                                <span>
+                                <i class="fas fa-trash text-danger"></i>
+                            </span>
+                            </li>
+                        {% endfor %}
+
+                        <li class="list-group-item d-flex justify-content-between">
+                            <small>Total (EUR)</small>
+                            <small><strong>{{ total|format_currency('EUR') }}</strong></small>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

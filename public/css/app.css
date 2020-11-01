@@ -56,6 +56,12 @@ body {
 .navbar .navbar-nav .nav-item .dropdown-menu table td i {
   font-size: 1.2rem;
 }
+.navbar .navbar-nav .nav-item .dropdown-menu table .btn-valider-panier {
+  margin: 0.5rem;
+  background-color: #00bcd4 !important;
+  color: white !important;
+  text-transform: uppercase;
+}
 .navbar .navbar-nav .nav-item .dropdown-menu table .article-produit-image {
   padding: 0;
   width: 20%;
@@ -381,6 +387,15 @@ body {
 }
 .laptop__source a:hover, .laptop__source a:active {
   color: #555;
+}
+
+.checkout {
+  padding: 1rem;
+  background-color: #e0e0e0;
+}
+.checkout .panier img {
+  width: 80px;
+  height: auto;
 }
 
 @media (min-width: 768px) {

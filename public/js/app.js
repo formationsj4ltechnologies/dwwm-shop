@@ -35,7 +35,17 @@ $(document).ready(function () {
                     </tr>                                             
                     `
                 );
-            })
+            });
+
+            if (contenuPanier.length) {
+                $(`.contenu-panier`).append(
+                    `<tr>
+                    <td colspan="4">
+                        <a href="/panier/checkout" class="btn btn-block btn-valider-panier">valider le panier</a>
+                    </td>
+                </tr>`
+                );
+            }
         })
     }).click(function () {
         $('.contenu-panier').toggle();

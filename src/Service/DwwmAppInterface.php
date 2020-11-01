@@ -58,7 +58,7 @@ class DwwmAppInterface
                 $contenuDuPanier[] = [
                     "quantite" => $quantite,
                     "produit" => $produit,
-                    "sous_total" => $quantite * $produit->getPrix()
+                    "sous_total" => $quantite * $produit->getPrix(),
                 ];
             }
         }

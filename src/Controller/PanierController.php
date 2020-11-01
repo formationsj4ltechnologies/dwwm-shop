@@ -6,6 +6,7 @@ use App\Service\DwwmAppInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -79,5 +80,25 @@ class PanierController extends AbstractController
     {
         $this->appService->supprimerDuPanier($id);
         return $this->json(["resultat" => "OK"]);
+    }
+
+    /**
+     * @Route("/checkout", name="checkout")
+     * @return Response
+     */
+    public function checkout()
+    {
+        $panier = $this->appService->contenuDuPanier();
+        $total = 0;
+        foreach ($panier as $id => $article) {
+            $total += $article['sous_total'];
+        }
+
+        return $this->render('panier/checkout.html.twig', [
+            'titre_page' => $titrePage = "Checkout",
+            'titre_section' => $titreSection = "valider le panier",
+            'articles' => $this->appService->contenuDuPanier(),
+            'total'=>$total,
+        ]);
     }
 }

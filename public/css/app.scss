@@ -74,6 +74,13 @@ body {
             }
           }
 
+          .btn-valider-panier {
+            margin: .5rem;
+            background-color: #00bcd4 !important;
+            color: white !important;
+            text-transform: uppercase;
+          }
+
           .article-produit-image {
             padding: 0;
             width: 20%;
@@ -466,6 +473,18 @@ body {
 
     &:hover, &:active {
       color: #555;
+    }
+  }
+}
+
+.checkout {
+  padding: 1rem;
+  background-color: #e0e0e0;
+
+  .panier {
+    img {
+      width: 80px;
+      height: auto;
     }
   }
 }
